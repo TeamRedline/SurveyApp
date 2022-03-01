@@ -1,0 +1,54 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+    id 'application'
+}
+allprojects{
+    apply plugin : 'eclipse'
+    apply plugin : 'idea'
+    apply plugin : 'org.springframework.boot'
+    apply plugin : 'io.spring.dependency-management'
+    apply plugin : 'java-library'
+    apply from   : "${rootDir}/dependencies.gradle"
+}
+
+subprojects{
+    apply plugin: 'java'
+    group = "com.bilgeadam"
+    version= "v.1.0.0"
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+}
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+    }
+    dependencies {
+        implementation  libs.springBootWeb
+        implementation  libs.lombok
+        annotationProcessor libs.lombok
+        implementation  libs.openapi
+        implementation  libs.springValidation
+        implementation  libs.springDataJpa
+        implementation libs.postgresql
+
+    }
+}
+configurations {
+    compileOnly{
+        extendsFrom annotationProcessor
+    }
+}
+
+
+
