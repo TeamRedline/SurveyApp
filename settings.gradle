@@ -1,3 +1,5 @@
 rootProject.name = 'SurveyApp'
 include 'survey-srevice'
+include 'auth-srevice'
+include 'user-service'
 
