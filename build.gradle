@@ -4,19 +4,19 @@ plugins {
     id 'java'
     id 'application'
 }
-allprojects{
-    apply plugin : 'eclipse'
-    apply plugin : 'idea'
-    apply plugin : 'org.springframework.boot'
-    apply plugin : 'io.spring.dependency-management'
-    apply plugin : 'java-library'
-    apply from   : "${rootDir}/dependencies.gradle"
+allprojects {
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java-library'
+    apply from: "${rootDir}/dependencies.gradle"
 }
 
-subprojects{
+subprojects {
     apply plugin: 'java'
     group = "com.bilgeadam"
-    version= "v.1.0.0"
+    version = "v.1.0.0"
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
     tasks.withType(JavaCompile) {
@@ -34,18 +34,20 @@ allprojects {
         }
     }
     dependencies {
-        implementation  libs.springBootWeb
-        implementation  libs.lombok
+        implementation libs.springBootWeb
+        implementation libs.lombok
         annotationProcessor libs.lombok
-        implementation  libs.openapi
-        implementation  libs.springValidation
-        implementation  libs.springDataJpa
+        implementation libs.openapi
+        implementation libs.springValidation
+        implementation libs.springDataJpa
         implementation libs.postgresql
+        implementation libs.mapstruct
+        annotationProcessor libs.mapstructProcessor
 
     }
 }
 configurations {
-    compileOnly{
+    compileOnly {
         extendsFrom annotationProcessor
     }
 }

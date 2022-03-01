@@ -1,18 +1,26 @@
 package com.bilgeadam.repository.entity;
 
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@SuperBuilder(toBuilder = true)
 public class Teacher extends Employee {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "managerId")
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Manager manager;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "courseId")
-	private Course course;
 	private int yearsOfExperiance;
 
 }

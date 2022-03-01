@@ -1,8 +1,8 @@
 package com.bilgeadam.controller;
 
-import com.bilgeadam.repository.entity.Teacher;
-import com.bilgeadam.request.TeacherRequestDto;
-import com.bilgeadam.service.TeacherService;
+import com.bilgeadam.repository.entity.Course;
+import com.bilgeadam.request.CourseResquestDto;
+import com.bilgeadam.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,13 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/teacher")
+@RequestMapping("/course")
 @RequiredArgsConstructor
-public class TeacherController {
-	private final TeacherService service;
+public class CourseController {
+
+	private final CourseService service;
 
 	@PostMapping()
-	public Teacher createTeacher(@RequestBody TeacherRequestDto dto) {
-		return service.cerateTeacher(dto);
+	public Course createCourse(@RequestBody CourseResquestDto course) {
+
+		return service.createCourse(course);
 	}
 }

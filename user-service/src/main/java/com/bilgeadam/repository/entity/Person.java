@@ -1,19 +1,24 @@
 package com.bilgeadam.repository.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
-@AllArgsConstructor
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Getter
+@Setter
+@SuperBuilder(toBuilder = true)
 @NoArgsConstructor
-@Builder
-@Data
+@AllArgsConstructor
 @MappedSuperclass
-public class Person {
-
+public abstract class Person {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	long id;
 	@Embedded
 	private Name personName;
 	@Enumerated(value = EnumType.STRING)
