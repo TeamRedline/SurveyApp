@@ -18,7 +18,6 @@ import javax.persistence.ManyToOne;
 public class Teacher extends Employee {
 	@Id
 	long id;
-
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Manager manager;
 	private int yearsOfExperiance;
