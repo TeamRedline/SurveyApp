@@ -1,9 +1,8 @@
 package com.bilgeadam.repository;
 
-import com.bilgeadam.repository.entity.Question;
-import com.bilgeadam.repository.entity.SurveyTemplate;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.bilgeadam.dto.SurveyTemplateCreateDto;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface SurveyTemplateRepository extends JpaRepository<SurveyTemplate,Long> {
+public interface SurveyTemplateRepository extends MongoRepository<SurveyTemplateCreateDto, String> {
 
 }

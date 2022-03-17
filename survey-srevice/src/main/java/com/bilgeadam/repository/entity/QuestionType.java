@@ -1,24 +1,24 @@
 package com.bilgeadam.repository.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-
+@Entity
 public class QuestionType {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-    String name;
-    String description;
-    @OneToOne
-    @JsonIgnoreProperties("type")
-    Question question;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	long id;
+	String name;
+	String description;
+	@OneToMany(mappedBy = "questionType")
+	private List<Question> questions;
+
 }

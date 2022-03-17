@@ -1,6 +1,8 @@
 package com.bilgeadam.repository.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -11,18 +13,17 @@ import javax.persistence.*;
 
 public class StudentAnswer {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "survey_id")
-    Survey survey;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "question_id")
-    Question question;
-    long timestamp;
-    boolean isFinished;
-    String answer;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	long id;
 
+	@ManyToOne
+	@JoinColumn(name = "survey_id")
+	Survey survey;
+	@ManyToOne
+	Question question;
+	long timestamp;
+	boolean isFinished;
+	String answer;
 
 }

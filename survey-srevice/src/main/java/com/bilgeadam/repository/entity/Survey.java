@@ -1,10 +1,12 @@
 package com.bilgeadam.repository.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,11 +22,11 @@ public class Survey {
 	@JsonIgnoreProperties("survey")
 	private SurveyTemplate template;
 
-
 	long courseid;
 	long sequenceNumber;
 	long startTime;
 	long finishTime;
-
+	@OneToMany
+	List<StudentAnswer> studentAnswers;
 
 }

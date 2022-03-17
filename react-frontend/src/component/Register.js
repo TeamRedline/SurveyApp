@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import React, {Component} from 'react'
+
 import axios from 'axios'
 
 
@@ -20,7 +20,6 @@ export default class Register extends Component {
     // })
     // const [course, setCourse] = useState()
     // const [manager, setManager] = useState()
-
 
 
     // const onChange = (e) => {
@@ -59,9 +58,7 @@ export default class Register extends Component {
     //         }
 
 
-
     //     }s
-
 
 
     state = {
@@ -77,13 +74,12 @@ export default class Register extends Component {
     }
 
 
-
     onChange = (e) => {
 
-        const { name, value } = e.target
+        const {name, value} = e.target
         this.setState({
-            [name]: value
-        }
+                [name]: value
+            }
         )
         console.log(this.state)
     }
@@ -94,7 +90,7 @@ export default class Register extends Component {
 
         event.preventDefault();
 
-        const { firstName, lastName, middleName, street, city, country, zipCode, course, manager } = this.state
+        const {firstName, lastName, middleName, street, city, country, zipCode, course, manager} = this.state
 
 
         const body = {
@@ -127,10 +123,11 @@ export default class Register extends Component {
 
 
         return (
-            <div className='ui  column grid container ' style={{ padding: 10, paddingLeft: 120 }}>
-                <div class="ui vertical menu four wide column inverted" style={{ position: 'absolute', left: -150, top: 50 }}>
+            <div className='ui  column grid container ' style={{padding: 10, paddingLeft: 120}}>
+                <div class="ui vertical menu four wide column inverted"
+                     style={{position: 'absolute', left: -150, top: 50}}>
                     <div class="item">
-                        <div class="ui input"><input type="text" placeholder="Search..." /></div>
+                        <div class="ui input"><input type="text" placeholder="Search..."/></div>
                     </div>
                     <div class="item">
                         Home
@@ -155,11 +152,11 @@ export default class Register extends Component {
                             <a class="item"><i class="settings icon"></i> Account Settings</a>
                         </div>
                     </div>
-                </div >
+                </div>
 
 
                 <div className='ui raised very padded text container segment thirteen wide column'>
-                    <form class="ui form ui five row doubling  container" >
+                    <form class="ui form ui five row doubling  container">
 
                         <h4 class="ui dividing header">Teacher Information</h4>
                         <div class="field row">
@@ -168,12 +165,14 @@ export default class Register extends Component {
 
                                 <div class="field">
                                     <label>First Name</label>
-                                    <input type="text" name="firstName" placeholder="First Name" onChange={this.onChange} />
+                                    <input type="text" name="firstName" placeholder="First Name"
+                                           onChange={this.onChange}/>
                                 </div>
 
                                 <div class="field">
                                     <label>Last Name</label>
-                                    <input type="text" name="lastName" placeholder="Last Name" onChange={this.onChange} />
+                                    <input type="text" name="lastName" placeholder="Last Name"
+                                           onChange={this.onChange}/>
                                 </div>
                             </div>
                         </div>
@@ -181,17 +180,18 @@ export default class Register extends Component {
                             <label>Personel Address</label>
                             <div class="fields">
                                 <div class="twelve wide field">
-                                    <input type="text" name="street" placeholder="Street Address" onChange={this.onChange} />
+                                    <input type="text" name="street" placeholder="Street Address"
+                                           onChange={this.onChange}/>
                                 </div>
                                 <div class="four wide field">
-                                    <input type="text" name="zipCode" placeholder="zip code" onChange={this.onChange} />
+                                    <input type="text" name="zipCode" placeholder="zip code" onChange={this.onChange}/>
                                 </div>
                             </div>
                         </div>
                         <div class="two fields row">
                             <div class="field">
                                 <label>State</label>
-                                <select class="ui fluid dropdown" name='city' onChange={this.onChange} >
+                                <select class="ui fluid dropdown" name='city' onChange={this.onChange}>
                                     <option value="">State</option>
                                     <option value="AL">Alabama</option>
 
@@ -200,7 +200,7 @@ export default class Register extends Component {
                             <div class="field">
                                 <label>Country</label>
                                 <div class="ui fluid search selection dropdown">
-                                    <input type="hidden" name="country" onChange={this.onChange} />
+                                    <input type="hidden" name="country" onChange={this.onChange}/>
                                     <i class="dropdown icon"></i>
                                     <div class="default text">Select Country</div>
                                     <div class="menu">
@@ -214,7 +214,7 @@ export default class Register extends Component {
                         <div class="three fields row">
                             <div class="field">
                                 <label>Branch</label>
-                                <select class="ui fluid dropdown" name='branch' onChange={this.onChange} >
+                                <select class="ui fluid dropdown" name='branch' onChange={this.onChange}>
                                     <option value="">Branc</option>
                                     <option value="AL">Alabama</option>
 
@@ -223,7 +223,7 @@ export default class Register extends Component {
                             <div class="field">
                                 <label>Manager</label>
                                 <div class="ui fluid search selection dropdown">
-                                    <input type="hidden" name="manager" onChange={this.onChange} />
+                                    <input type="hidden" name="manager" onChange={this.onChange}/>
                                     <i class="dropdown icon"></i>
                                     <div class="default text">Select Country</div>
                                     <div class="menu">
@@ -234,27 +234,29 @@ export default class Register extends Component {
                             </div>
                             <div class="field">
                                 <label>Courses</label>
-                                <select class="ui fluid dropdown" name='course' onChange={this.onChange} >
+                                <select class="ui fluid dropdown" name='course' onChange={this.onChange}>
                                     <option value="">Branc</option>
                                     <option value="AL">Alabama</option>
 
                                 </select>
                             </div>
                         </div>
-                        <br /> <br />
+                        <br/> <br/>
                         <div class="fields row">
-                            <div class="ui form six wide field"  >
+                            <div class="ui form six wide field">
                                 <div class="grouped fields">
                                     <label>Chooser Trainer Type?</label>
                                     <div class="field">
                                         <div class="ui radio checkbox">
-                                            <input type="radio" name="example2" value="masterTrainer" checked="checked" onChange={this.onChange} />
+                                            <input type="radio" name="example2" value="masterTrainer" checked="checked"
+                                                   onChange={this.onChange}/>
                                             <label>Master Trainer</label>
                                         </div>
                                     </div>
                                     <div class="field">
                                         <div class="ui radio checkbox">
-                                            <input type="radio" name="example2" value="assistanTrainer" onChange={this.onChange} />
+                                            <input type="radio" name="example2" value="assistanTrainer"
+                                                   onChange={this.onChange}/>
                                             <label>Assistane Trainer</label>
                                         </div>
                                     </div>
@@ -263,14 +265,15 @@ export default class Register extends Component {
                             </div>
                             <div class="six wide field">
                                 <label>Years Of Experiance</label>
-                                <input type="text" name="yearsOfExperiance" placeholder=" Years Of Experiance" onChange={this.onChange} />
+                                <input type="text" name="yearsOfExperiance" placeholder=" Years Of Experiance"
+                                       onChange={this.onChange}/>
                             </div>
 
                             <div class="six wide field">
                                 <label>Topic</label>
                                 <div class="two fields">
                                     <div class="field">
-                                        <select class="ui fluid search dropdown" name="topic" onChange={this.onChange} >
+                                        <select class="ui fluid search dropdown" name="topic" onChange={this.onChange}>
                                             <option value="">Month</option>
                                             <option value="1">January</option>
                                             <option value="2">February</option>
@@ -290,15 +293,14 @@ export default class Register extends Component {
                                 </div>
                             </div>
                         </div>
-                        <br /> <br /> <br /> <br />
+                        <br/> <br/> <br/> <br/>
 
 
+                        <div class="ui button primary" tabindex="0" onClick={this.registerAction}>Submit</div>
+                    </form>
+                </div>
 
-
-                        <div class="ui button primary" tabindex="0" onClick={this.registerAction}>Submit </div>
-                    </form></div>
-
-            </div >
+            </div>
 
         )
     }

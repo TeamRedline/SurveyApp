@@ -10,9 +10,15 @@ spring:
     url: "jdbc:postgresql://localhost:5432/surveydb"
 
 
+  data:
+    mongodb:
+      database: surveyDB
+      host: localhost
+      port: 27017
   jpa:
     hibernate:
       ddl-auto: create
     show-sql: true
     properties:
       hibernate.format_sql: true
+

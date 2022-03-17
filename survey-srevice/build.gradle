@@ -4,6 +4,6 @@ buildscript {
     }
 }
 dependencies {
-
+    implementation libs.springDataMongoDb
 
 }
