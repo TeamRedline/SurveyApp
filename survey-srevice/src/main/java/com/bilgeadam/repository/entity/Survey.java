@@ -1,32 +1,31 @@
 package com.bilgeadam.repository.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 
+@Builder
+@Data
 public class Survey {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
 	@OneToOne
-	@JsonIgnoreProperties("survey")
+	@JsonIgnore
 	private SurveyTemplate template;
-
 	long courseid;
 	long sequenceNumber;
-	long startTime;
-	long finishTime;
-	@OneToMany
-	List<StudentAnswer> studentAnswers;
+	Date startTime;
+	Date finishTime;
+	String templateUId;
 
 }

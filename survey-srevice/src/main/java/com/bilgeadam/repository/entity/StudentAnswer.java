@@ -18,9 +18,6 @@ public class StudentAnswer {
 	long id;
 
 	@ManyToOne
-	@JoinColumn(name = "survey_id")
-	Survey survey;
-	@ManyToOne
 	Question question;
 	long timestamp;
 	boolean isFinished;

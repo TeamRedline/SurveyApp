@@ -12,5 +12,9 @@ import lombok.NoArgsConstructor;
 public class CourseResquestDto {
 
 	private String name;
+	private String assitantTrainerName;
+	private String masterTrainerName;
 
+	long createdDate;
+	long finishDate;
 }

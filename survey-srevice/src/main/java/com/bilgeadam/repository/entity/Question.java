@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -29,6 +30,12 @@ public class Question {
 	List<StudentAnswer> answer;
 	@ManyToMany
 	@JsonIgnoreProperties("questions")
-	List<SurveyTemplate> surveyTemplates;
+	List<SurveyTemplate> surveyTemplates = new ArrayList<>();
 
+	public List<SurveyTemplate> getSurveyTemplate() {
+		if (this.surveyTemplates == null) {
+			surveyTemplates = new ArrayList<>();
+		}
+		return surveyTemplates;
+	}
 }

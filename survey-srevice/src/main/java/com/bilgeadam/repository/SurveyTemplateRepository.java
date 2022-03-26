@@ -5,4 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface SurveyTemplateRepository extends MongoRepository<SurveyTemplateCreateDto, String> {
 
+	SurveyTemplateCreateDto findByTitle(String title);
+
 }

@@ -1,19 +1,30 @@
 package com.bilgeadam.service;
 
+import com.bilgeadam.dto.QuestionRequestDto;
+import com.bilgeadam.map.QuestionMap;
 import com.bilgeadam.repository.QuestionRepository;
 import com.bilgeadam.repository.entity.Question;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bilgeadam.repository.entity.SurveyTemplate;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
+@RequiredArgsConstructor
 public class QuestionService {
 
-    @Autowired
-    QuestionRepository questionRepository;
+	final QuestionRepository questionRepository;
+	final QuestionMap questionMap;
 
-    public void createQuestion(Question question) {
+	public void createQuestion(List<QuestionRequestDto> questions, SurveyTemplate survey) {
 
-        questionRepository.save(question);
-    }
+		questions.stream().forEach(line -> {
+			Question question = questionMap.toQuestion(line);
+			question.getSurveyTemplate().add(survey);
+			questionRepository.save(question);
+		});
+
+	}
 
 }

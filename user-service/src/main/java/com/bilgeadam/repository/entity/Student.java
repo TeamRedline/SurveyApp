@@ -22,10 +22,11 @@ public class Student extends Person {
 	long id;
 	private String studentNumber = UUID.randomUUID().toString();
 	private long registredDate;
+
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonIgnore
 	@JoinTable(name = "stu_course", joinColumns = { @JoinColumn(name = "stu_id") },
 			   inverseJoinColumns = { @JoinColumn(name = "course_id") })
-	private List<Course> courses = new ArrayList<>();
+	private List<Course> course = new ArrayList<>();
 
 }

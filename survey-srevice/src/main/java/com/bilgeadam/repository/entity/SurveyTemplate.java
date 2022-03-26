@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -21,16 +22,17 @@ public class SurveyTemplate {
 	long id;
 	String templateCode;
 	int version;
-	String explanation;
+	String description;
+	String text;
 	String title;
-	long startTime;
+	long createdDate;
 	long finishTime;
 	boolean isDraft;
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "surveyTemplates")
 	@JsonIgnoreProperties("surveyTemplates")
-	List<Question> questions;
+	List<Question> questions = new ArrayList<>();
 	@OneToOne
-	@JsonIgnoreProperties("template")
+	
 	private Survey survey;
 
 }

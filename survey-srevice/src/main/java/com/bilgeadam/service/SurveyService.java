@@ -1,21 +1,31 @@
 package com.bilgeadam.service;
 
-import com.bilgeadam.repository.QuestionRepository;
 import com.bilgeadam.repository.SurveyRepository;
-import com.bilgeadam.repository.entity.Question;
 import com.bilgeadam.repository.entity.Survey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SurveyService {
 
-    @Autowired
-    SurveyRepository surveyRepository;
+	@Autowired
+	SurveyRepository surveyRepository;
 
-    public void createQuestion(Survey survey) {
+	public Survey createSurvey(Survey survey) {
 
-        surveyRepository.save(survey);
-    }
+		return surveyRepository.save(survey);
+	}
+
+	public List<Survey> getSurveys() {
+
+		return surveyRepository.findAll();
+	}
+
+	public Survey getbySurveyId(long id) {
+
+		return surveyRepository.getById(id);
+	}
 
 }
