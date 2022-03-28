@@ -8,6 +8,8 @@ import com.bilgeadam.repository.entity.SurveyTemplate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class SurveyTemplateService {
@@ -36,6 +38,11 @@ public class SurveyTemplateService {
 
 	public SurveyTemplateCreateDto getbyTitle(String title) {
 		return surveyTemplateRepository.findByTitle(title);
+
+	}
+
+	public Optional<SurveyTemplate> getbyId(Long id) {
+		return repository.findById(id);
 
 	}
 }
