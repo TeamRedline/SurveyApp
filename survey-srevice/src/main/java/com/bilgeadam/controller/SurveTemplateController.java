@@ -2,7 +2,9 @@ package com.bilgeadam.controller;
 
 import com.bilgeadam.dto.SurveyTemplateCreateDto;
 import com.bilgeadam.map.QuestionMap;
+import com.bilgeadam.repository.SurveyTemplatePostgreRepository;
 import com.bilgeadam.repository.SurveyTemplateRepository;
+import com.bilgeadam.repository.entity.SurveyTemplate;
 import com.bilgeadam.service.SurveyTemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class SurveTemplateController {
 	@Autowired
 	SurveyTemplateService service;
 	final QuestionMap map;
+	@Autowired
+	SurveyTemplatePostgreRepository templatePostgreRepository;
 
 	@CrossOrigin(origins = "http://localhost:8081")
 	@PostMapping("/save")
@@ -75,5 +79,11 @@ public class SurveTemplateController {
 	public SurveyTemplateCreateDto findByTitle(@RequestParam String title) {
 
 		return repository.findByTitle(title);
+	}
+
+	@GetMapping("/findall")
+	public Page<SurveyTemplate> findall(Pageable page) {
+
+		return templatePostgreRepository.findAll(page);
 	}
 }

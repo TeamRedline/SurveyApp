@@ -1,10 +1,8 @@
 package com.bilgeadam.repository.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -29,7 +27,8 @@ public class Question {
 	@JsonIgnoreProperties("question")
 	List<StudentAnswer> answer;
 	@ManyToMany
-	@JsonIgnoreProperties("questions")
+	@JsonIgnore
+	@ToString.Exclude
 	List<SurveyTemplate> surveyTemplates = new ArrayList<>();
 
 	public List<SurveyTemplate> getSurveyTemplate() {
@@ -38,4 +37,6 @@ public class Question {
 		}
 		return surveyTemplates;
 	}
+
+	String types;
 }

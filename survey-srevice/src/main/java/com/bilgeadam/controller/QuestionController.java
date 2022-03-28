@@ -1,13 +1,14 @@
 package com.bilgeadam.controller;
 
+import com.bilgeadam.repository.entity.Question;
 import com.bilgeadam.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/question")
 @CrossOrigin(origins = "*")
 public class QuestionController {
 
@@ -18,5 +19,14 @@ public class QuestionController {
 	//    public void createQuestion(@RequestBody Question question) {
 	//        questionService.createQuestion(question);
 	//    }
+	@GetMapping("/all")
+	public List<Question> getAll() {
+		return questionService.getAll();
+	}
+
+	@GetMapping("/findbytemplate")
+	public List<Question> findBySurveyTempalte(@RequestParam long id) {
+		return questionService.findBySurveyTemplate(id);
+	}
 
 }
