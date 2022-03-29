@@ -42,6 +42,7 @@ allprojects {
         implementation libs.springDataJpa
         implementation libs.postgresql
         implementation libs.mapstruct
+        implementation  libs.springOpenFeign
         annotationProcessor libs.mapstructProcessor
 
     }

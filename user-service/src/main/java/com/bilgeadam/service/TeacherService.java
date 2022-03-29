@@ -1,10 +1,12 @@
 package com.bilgeadam.service;
 
+import com.bilgeadam.manager.AuthManager;
 import com.bilgeadam.mapper.TeacherMapper;
 import com.bilgeadam.repository.TeacherRepository;
 import com.bilgeadam.repository.entity.Course;
 import com.bilgeadam.repository.entity.Teacher;
 import com.bilgeadam.request.TeacherRequestDto;
+import com.bilgeadam.request.UserRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ public class TeacherService {
 	private final TeacherRepository teacherRepository;
 	private final TeacherMapper mapper;
 	private final CourseService courseService;
+	private final AuthManager authManager;
 
 	public Teacher cerateTeacher(TeacherRequestDto dto) {
 		//		Address address = Address.builder().street(dto.getStreet()).city(dto.getCity()).country(dto.getCountry())
@@ -28,15 +31,16 @@ public class TeacherService {
 		//		teacher.setAddress(address);
 		//		teacher.setEmail(dto.getEmail());
 		//		teacher.setRole(dto.getRole());
-		teacherRepository.save(teacher);
+		Teacher teacherToSend = teacherRepository.save(teacher);
 		Optional<Course> course = courseService.getById(dto.getCourseId());
 		if (course.isPresent()) {
 			course.get().setMasterTrainer(teacher);
 			courseService.updateCourse(course.get());
 
 		}
+		UserRequestDto requestDto = new UserRequestDto(teacherToSend);
+		authManager.createUser(requestDto);
 		return teacher;
-
 	}
 
 	public List<Teacher> getAll() {
