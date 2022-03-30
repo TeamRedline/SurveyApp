@@ -38,7 +38,7 @@ public class TeacherService {
 			courseService.updateCourse(course.get());
 
 		}
-		UserRequestDto requestDto = new UserRequestDto(teacherToSend);
+		UserRequestDto requestDto = new UserRequestDto(teacherToSend.getEmail(),teacherToSend.getPassword(),teacherToSend.getId());
 		authManager.createUser(requestDto);
 		return teacher;
 	}

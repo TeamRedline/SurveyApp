@@ -1,12 +1,10 @@
 package com.bilgeadam.controller;
 
 import com.bilgeadam.dto.UserRequestDto;
-import com.bilgeadam.repository.entity.User;
+import com.bilgeadam.dto.UserResponseDto;
 import com.bilgeadam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -16,7 +14,12 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/save")
-    public User createUser(UserRequestDto userRequestDto){
-       return userService.save(userRequestDto);
+    public UserResponseDto createUser(@RequestBody UserRequestDto requestDto){
+       return userService.save(requestDto);
+    }
+
+    @GetMapping("/getUser")
+    public String isUser(@RequestBody UserRequestDto requestDto){
+        return userService.isUser(requestDto);
     }
 }

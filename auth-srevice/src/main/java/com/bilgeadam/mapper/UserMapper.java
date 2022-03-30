@@ -1,6 +1,7 @@
 package com.bilgeadam.mapper;
 
 import com.bilgeadam.dto.UserRequestDto;
+import com.bilgeadam.dto.UserResponseDto;
 import com.bilgeadam.repository.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -9,4 +10,7 @@ import org.mapstruct.ReportingPolicy;
 public interface UserMapper {
 
    User toUser(UserRequestDto requestDto);
+
+   UserResponseDto toUserResponseDto(User user);
+
 }

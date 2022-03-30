@@ -1,14 +1,14 @@
-package com.bilgeadam.request;
+package com.bilgeadam.dto;
 
-import com.bilgeadam.repository.entity.Teacher;
 import lombok.*;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRequestDto {
+@ToString
+@Builder
+public class UserResponseDto {
     private String email;
     private String password;
     private Long personId;
